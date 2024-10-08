@@ -34,5 +34,22 @@ def guess_gender(name,country='US'):
     gender = response.json()["gender"]
     return gender
 
+
+@app.route('/blog')
+def get_blog():
+    response = rq.get(f'https://api.npoint.io/c790b4d5cab58020d391')
+    blog_posts = response.json()
+
+    return render_template('blog.html', posts=blog_posts)
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True) 
